@@ -11,6 +11,7 @@ pipeline {
                 sh 'ps -aux | grep java '
            
                 sh "echo $PROX > test.txt"
+                stash name: 'my-artifact', includes: 'test.txt'
             }
 
     
@@ -18,7 +19,7 @@ pipeline {
         stage ('Test') {
 
             steps {
-                copyArtifacts(projectName: 'rodzinka', filter:'test.txt', optional: true);
+                unstash 'my-artifact'
                 sh ' cat test.txt'
             }
         
@@ -38,10 +39,10 @@ pipeline {
 
     
     post {
-        always {
-            archiveArtifacts artifacts: 'test.txt', fingerprint: true, allowEmptyArchive: true
-            // junit './test.txt'
-        }
+        // always {
+        //     archiveArtifacts artifacts: 'test.txt', fingerprint: true, allowEmptyArchive: true
+        //     // junit './test.txt'
+        // }
 
         success {
             echo "Pipeline succeeded"
