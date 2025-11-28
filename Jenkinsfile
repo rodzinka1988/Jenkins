@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'ps -aux | grep java '
            
-                sh 'echo $PROX' > test.txt
+                sh 'echo \"$PROX\"' > test.txt
             }
 
         
