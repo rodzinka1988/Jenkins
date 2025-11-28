@@ -9,9 +9,18 @@ pipeline {
                     PROX= 'elo '
                 }
 
-                sh 'echo $PROX'
+                sh 'echo $PROX' v> test.txt
             }
+
+        
         }
+
+    post {
+        always {
+            archiveArtifacts artifacts: './test.txt', fingerprint: true
+            junit './test.txt'
+        }
+    }
         // stage('Test') {
         //     steps {
         //         echo 'Testing..'
