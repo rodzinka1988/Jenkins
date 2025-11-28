@@ -16,6 +16,19 @@ pipeline {
         
         }
 
+        // stage('Test') {
+        //     steps {
+        //         echo 'Testing..'
+        //     }
+        // }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying....'
+        //     }
+        // }
+    }
+
+    
     post {
         always {
             archiveArtifacts artifacts: './test.txt', fingerprint: true
@@ -28,16 +41,5 @@ pipeline {
         failure {
             echo "Pipeline failed"
         }
-    }
-        // stage('Test') {
-        //     steps {
-        //         echo 'Testing..'
-        //     }
-        // }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying....'
-        //     }
-        // }
     }
 }
