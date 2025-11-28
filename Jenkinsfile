@@ -13,14 +13,14 @@ pipeline {
                 sh "echo $PROX > test.txt"
             }
 
+    
+        }
         stage ('Test') {
 
             steps {
                 copyArtifacts(projectName: 'rodzinka', filter:'test.txt', optional: true);
                 sh ' cat test.txt'
             }
-        }
-
         
         }
 
