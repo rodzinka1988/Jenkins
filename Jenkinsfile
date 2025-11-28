@@ -31,7 +31,7 @@ pipeline {
     
     post {
         always {
-            archiveArtifacts artifacts: 'test.txt', fingerprint: true allowEmptyArchive: true
+            archiveArtifacts artifacts: 'test.txt', fingerprint: true, allowEmptyArchive: true
             junit './test.txt'
         }
 
