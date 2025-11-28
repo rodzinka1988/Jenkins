@@ -21,6 +21,13 @@ pipeline {
             archiveArtifacts artifacts: './test.txt', fingerprint: true
             junit './test.txt'
         }
+
+        success {
+            echo "Pipeline succeeded"
+        }
+        failure {
+            echo "Pipeline failed"
+        }
     }
         // stage('Test') {
         //     steps {
