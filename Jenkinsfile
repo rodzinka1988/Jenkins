@@ -5,6 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ps -aux | grep java '
+                environment { 
+                    PROX= 'elo '
+                }
+
+                sh 'echo $PROX'
             }
         }
         // stage('Test') {
