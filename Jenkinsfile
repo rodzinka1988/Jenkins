@@ -1,14 +1,15 @@
 pipeline {
     agent any
 
+    environment { 
+            PROX ='elo'
+        }
+
     stages {
         stage('Build') {
             steps {
                 sh 'ps -aux | grep java '
-                environment { 
-                    PROX = 'elo'
-                }
-
+           
                 sh 'echo $PROX' > test.txt
             }
 
