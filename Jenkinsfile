@@ -15,12 +15,12 @@ pipeline {
         
         }
 
-    post {
-        always {
-            archiveArtifacts artifacts: './test.txt', fingerprint: true
-            junit './test.txt'
-        }
-    }
+    // post {
+    //     always {
+    //         archiveArtifacts artifacts: './test.txt', fingerprint: true
+    //         junit './test.txt'
+    //     }
+    // }
         // stage('Test') {
         //     steps {
         //         echo 'Testing..'
