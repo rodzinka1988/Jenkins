@@ -9,7 +9,7 @@ pipeline {
                     PROX= 'elo '
                 }
 
-                sh 'echo $PROX' v> test.txt
+                sh 'echo $PROX' > test.txt
             }
 
         
