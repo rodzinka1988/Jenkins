@@ -56,14 +56,14 @@ EOF
 
     
         }
-        stage ('Test') {
+        // stage ('Test') {
 
-            steps {
+        //     steps {
               
-                sh 'Zrobione'
-            }
+        //         sh 'Zrobione'
+        //     }
         
-        }
+        // }
 
         // stage('Test') {
         //     steps {
