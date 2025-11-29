@@ -4,10 +4,11 @@ pipeline {
     environment { 
             PROX ='elo'
         }
-
+    
     stages {
         stage('Build install') {
             steps {
+
                 sh 'ps -aux | grep java '
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
@@ -20,7 +21,7 @@ pipeline {
 
             steps {
                 unstash 'my-artifact'
-                sh ' cat test.txt && cat /etc/passwdvb '
+                sh ' cat test.txt && cat /etc/passwd '
             }
         
         }
