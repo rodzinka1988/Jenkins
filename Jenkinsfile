@@ -10,7 +10,12 @@ pipeline {
     stages {
         stage('Build install') {
             steps {
-
+                 checkout([$class: 'GitSCM',
+                    branches: [[name: '*/main']], 
+                    userRemoteConfigs: [[
+                    url: 'https://github.com/rodzinka1988/Jenkins.git',
+                    credentialsId: 'test'  // <-- Twój GitHub token w Jenkins
+                ]]
                 sh 'ps -aux | grep java '
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
