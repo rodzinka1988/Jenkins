@@ -1,6 +1,8 @@
 pipeline {
-    agent {
-        docker { image 'node:latest' }
+    agent any 
+
+    tools {
+        nodejs "NodeJS_16" // nazwa zdefiniowana w Jenkinsie
     }
 
     environment { 
