@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     options {
-        copyArtifactPermission('Create');
+        copyArtifactPermission('Create', 'Build install');
     }
 
     environment { 
