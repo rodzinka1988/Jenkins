@@ -11,8 +11,8 @@ pipeline {
                 checkout scmGit(
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/twoj-user/rodzinka2.git',
-                        credentialsId: 'github-token'
+                        url: 'https://github.com/rodzinka1988/Jenkins.git',
+                        credentialsId: 'tw'
                     ]]
                 )
             }
