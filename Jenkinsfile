@@ -59,8 +59,8 @@ EOF
         stage ('Test') {
 
             steps {
-                unstash 'my-artifact'
-                sh ' cat test.txt && cat /etc/passwd '
+              
+                sh 'Zrobione'
             }
         
         }
