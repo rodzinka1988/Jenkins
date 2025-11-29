@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    options {
+        copyArtifactPermission('Create');
+    }
 
     environment { 
             PROX ='elo'
