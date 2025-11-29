@@ -17,7 +17,8 @@ pipeline {
                 // //     credentialsId: 'test'  // <-- Twój GitHub token w Jenkins
                 // // ]]
                 sh "ps -aux | grep java"
-                sh "npm install && npm audit --audit-level=critical"
+                sh "npm install"
+                sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
                 stash name: 'my-artifact', includes: 'test.txt'
             }
