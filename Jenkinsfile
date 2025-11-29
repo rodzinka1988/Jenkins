@@ -45,7 +45,7 @@ EOF
 
                 '''
       
-            stash name: 'my-package', includes: 'package.json'
+            // stash name: 'my-package', includes: 'package.json'
    
                            
             archiveArtifacts artifacts: 'package.json',
@@ -70,11 +70,12 @@ EOF
                     def fristNames = "Paweł"  
                     echo fristNames   
                 }
-                unstash 'my-package'
+                // unstash 'my-package'
                 sh "ls -l"
                 sh "npm install"
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
+                sh "cat package.json"
  
                
               
