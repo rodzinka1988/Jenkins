@@ -6,6 +6,17 @@ pipeline {
         }
     
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/twoj-user/rodzinka2.git',
+                        credentialsId: 'github-token'
+                    ]]
+                )
+            }
+        }
                stage('Create package.json') {
             steps {
                 sh '''
@@ -60,7 +71,7 @@ EOF
 
             steps {
               
-                sh 'Zrobione'
+                sh 'echo Zrobione'
             }
         
         }
