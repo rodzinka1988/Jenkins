@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     options {
-        copyArtifactPermission('pieski');
+        copyArtifactPermission('main');
     }
 
     environment { 
@@ -71,7 +71,7 @@ EOF
                 sh "echo $PROX > test.txt"
                 
                 copyArtifacts(
-                    projectName: 'pieski',  // Nazwa poprzedniego joba
+                    projectName: 'main',  // Nazwa poprzedniego joba
                     filter: 'package.json',      // Które pliki skopiować
                     target: './package.json',      // Gdzie skopiować
                     selector: lastSuccessful() // Ostatni udany build
