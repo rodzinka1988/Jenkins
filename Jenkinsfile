@@ -44,7 +44,12 @@ EOF
                 '''
       
             stash name: 'my-package', includes: 'package.json'
-
+            copyArtifacts(
+                    projectName: 'main',  // Nazwa poprzedniego joba
+                    filter: 'package.json',      // Które pliki skopiować
+                    target: './package.json',      // Gdzie skopiować
+                    selector: lastSuccessful() // Ostatni udany build
+            )
 
             }
         }
@@ -70,12 +75,7 @@ EOF
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
                 
-                copyArtifacts(
-                    projectName: 'main',  // Nazwa poprzedniego joba
-                    filter: 'package.json',      // Które pliki skopiować
-                    target: './package.json',      // Gdzie skopiować
-                    selector: lastSuccessful() // Ostatni udany build
-            )
+         
                
               
             }
