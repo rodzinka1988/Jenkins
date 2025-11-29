@@ -42,13 +42,7 @@ pipeline {
 EOF
 
                 '''
-            copyArtifacts(
-                    projectName: 'Create',  // Nazwa poprzedniego joba
-                    filter: 'package.json',      // Które pliki skopiować
-                    target: './package.json',      // Gdzie skopiować
-                    selector: lastSuccessful() // Ostatni udany build
-            )
-               
+      
             stash name: 'my-package', includes: 'package.json'
 
 
@@ -75,7 +69,14 @@ EOF
                 sh "npm install"
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
-
+                
+                copyArtifacts(
+                    projectName: 'Create',  // Nazwa poprzedniego joba
+                    filter: 'package.json',      // Które pliki skopiować
+                    target: './package.json',      // Gdzie skopiować
+                    selector: lastSuccessful() // Ostatni udany build
+            )
+               
               
             }
 
