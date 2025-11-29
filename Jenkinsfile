@@ -1,8 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'node:latest' }
-    }
-
+  
     environment { 
             PROX ='elo'
         }
@@ -10,6 +7,10 @@ pipeline {
     stages {
         stage('Build install') {
             steps {
+                  agent {
+                        docker { image 'node:latest' }
+                }
+
                 //  checkout([$class: 'GitSCM',
                 //     branches: [[name: '*/main']], 
                 // //     userRemoteConfigs: [[
