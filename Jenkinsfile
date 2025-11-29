@@ -6,10 +6,10 @@ pipeline {
         }
 
     stages {
-        stage('Build') {
+        stage('Build install') {
             steps {
                 sh 'ps -aux | grep java '
-           
+                sh "npm audit --audit-level=critical && echo $?"
                 sh "echo $PROX > test.txt"
                 stash name: 'my-artifact', includes: 'test.txt'
             }
@@ -20,7 +20,7 @@ pipeline {
 
             steps {
                 unstash 'my-artifact'
-                sh ' cat test.txt'
+                sh ' cat test.txt && cat /etc/passwdvb '
             }
         
         }
