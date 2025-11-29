@@ -17,7 +17,7 @@ pipeline {
                 )
             }
         }
-               stage('Create package.json') {
+               stage('Create') {
             steps {
                 sh '''
                     cat > package.json << 'EOF'
@@ -65,7 +65,7 @@ EOF
                 sh "echo $PROX > test.txt"
 
                 copyArtifacts(
-                    projectName: 'Create package.json',  // Nazwa poprzedniego joba
+                    projectName: 'Create',  // Nazwa poprzedniego joba
                     filter: 'package.json',      // Które pliki skopiować
                     target: './package.json',      // Gdzie skopiować
                     selector: lastSuccessful() // Ostatni udany build
