@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:24.11.1-alpine3.22' }
+    }
 
     environment { 
             PROX ='elo'
@@ -10,6 +12,7 @@ pipeline {
             steps {
 
                 sh 'ps -aux | grep java '
+                sh 'dn install npm'
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
                 stash name: 'my-artifact', includes: 'test.txt'
