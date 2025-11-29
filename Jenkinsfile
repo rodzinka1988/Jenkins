@@ -47,7 +47,11 @@ EOF
       
             stash name: 'my-package', includes: 'package.json'
    
-
+                           
+            archiveArtifacts artifacts: 'package.json',
+                   allowEmptyArchive: true,
+                   fingerprint: true,
+                   onlyIfSuccessful: true
             }
         }
         stage('Build install') {
@@ -71,13 +75,7 @@ EOF
                 sh "npm install"
                 sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
-                
-                     copyArtifacts(
-                    projectName: 'main',  // Nazwa poprzedniego joba
-                    filter: 'package.json',      // Które pliki skopiować
-                    target: './package.json',      // Gdzie skopiować
-                    selector: lastSuccessful() // Ostatni udany build
-            )
+ 
                
               
             }
