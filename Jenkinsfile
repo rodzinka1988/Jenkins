@@ -9,7 +9,7 @@ pipeline {
         stage('Build install') {
             steps {
                 sh 'ps -aux | grep java '
-                sh "npm audit --audit-level=critical && echo $?"
+                sh "npm audit --audit-level=critical"
                 sh "echo $PROX > test.txt"
                 stash name: 'my-artifact', includes: 'test.txt'
             }
